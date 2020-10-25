@@ -69,22 +69,28 @@ public class Rational
     // Returns whether or not the Rational is currently simplified
     // or not
     public boolean isSimplified() { 
-        return false; // YOUR CODE HERE
+        return (greatestCommonFactor(this.numerator, this.denominator)==1);
     }
 
     // Calculates the double value of our Rational
     public double calculateDecimalValue() { 
-        return 0.0; // YOUR CODE HERE
+        return (double)(this.numerator)/(double)(this.denominator);
     }
 
     // Returns the Rational we get from raising  the rational number to an integer power
     public Rational pow(int exponent) {
-        return null; // YOUR CODE HERE
+        int numerator = 1;
+        int denominator = 1;
+        for (int i = 0; i< exponent; i++){
+            numerator = numerator * this.numerator;
+            denominator = denominator * this.denominator;}
+        Rational powx = new Rational(numerator,denominator);
+        return powx;
     }
 
     // Checks to see if either the numerator or denominator match a given number
     public boolean matches(int x) {
-        return false; // YOUR CODE HERE
+        return (x == this.denominator || x == this.numerator);
     }
 
 
@@ -94,18 +100,19 @@ public class Rational
     // Methods you'll write for homework:
     // Returns whether or not the Rational is a negative number
     public boolean isNegative() { 
-        return false; // YOUR CODE HERE
+        return ((this.numerator < 0 && this.denominator > 0) || (this.numerator > 0 && this.denominator < 0 ));
     }
 
     // Calculates the reciprocal of a Rational number.
     // The reciprocal of 3/4 is 4/3, the reciprocal of 1/2 is 2/1
     public Rational reciprocal() {
-        return null; // YOUR CODE HERE
+        Rational x = new Rational (this.denominator,this.numerator);
+        return x;
     }
 
     // Checks whether the current Rational is the exactly the same as other
     public boolean equals(Rational other) {
-        return false; // YOUR CODE HERE
+        return (this.numerator == other.numerator && this.denominator == other.denominator);
     }
 
 
